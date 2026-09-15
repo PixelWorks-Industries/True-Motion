@@ -1,60 +1,30 @@
-import { Link } from 'react-router-dom';
-import { projects } from '@/data/projects';
-import { Reveal } from '@/components/motion/Reveal';
-import { ImageFrame } from '@/components/ui/ImageFrame';
-import { PageIntro } from '@/components/ui/PageIntro';
-import { ProjectTile } from '@/components/ui/ProjectTile';
-import type { Project } from '@/data/projects';
-
 export function Work() {
-  const featured = projects.find((p) => p.featured) ?? projects[0];
-  const rest = projects.filter((p) => p.slug !== featured.slug);
-
   return (
-    <>
-      <PageIntro
-        number="01"
-        label="Work"
-        title="Selected work"
-        description="Projects across web, identity, e-commerce, and motion. Each one started with a business and a constraint."
-      />
+    <section
+      data-nav-theme="light"
+      className="flex min-h-[100svh] items-center justify-center bg-[#EEEEEE] text-[#0B0909]"
+    >
+      <div className="container-grid w-full">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+          <div className="md:col-span-2">
+            <span className="text-[10px] uppercase tracking-[0.16em] text-[#6F6B6B]">
+              01 / Work
+            </span>
+          </div>
 
-      <section className="pb-20 md:pb-32">
-        <div className="container-grid">
-          <Link to={`/work/${featured.slug}`} className="group block mb-16 md:mb-24">
-            <FeaturedLarge project={featured} />
-          </Link>
+          <div className="md:col-span-8 md:col-start-4">
+            <h1 className="text-[clamp(3rem,8vw,7rem)] font-medium leading-[0.92] tracking-[-0.06em]">
+              Coming soon.
+            </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-            {rest.map((project, i) => (
-              <ProjectTile key={project.slug} project={project} index={i} />
-            ))}
+            <p className="mt-6 max-w-md text-sm leading-[1.7] text-[#6F6B6B]">
+              We’re currently building out the work archive. Check back soon
+              to see selected projects across web, identity, digital, motion,
+              and video.
+            </p>
           </div>
         </div>
-      </section>
-    </>
-  );
-}
-
-function FeaturedLarge({ project }: { project: Project }) {
-  return (
-    <div>
-      <ImageFrame ratio="16 / 9">
-        <img src={project.image} alt={project.alt} loading="lazy" />
-      </ImageFrame>
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-5 border-t border-border-custom">
-        <div className="md:col-span-7">
-          <Reveal>
-            <h2 className="text-heading text-foreground">{project.name}</h2>
-          </Reveal>
-          <p className="text-muted mt-3 leading-relaxed max-w-md">{project.description}</p>
-        </div>
-        <div className="md:col-span-4 md:col-start-9 flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
-          <span className="text-meta">{project.category}</span>
-          <span className="text-meta">{project.scope}</span>
-          <span className="text-meta">{project.year}</span>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
