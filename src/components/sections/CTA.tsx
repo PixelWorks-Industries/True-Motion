@@ -11,7 +11,7 @@ export function CTA() {
           <div className="md:col-span-8">
             <SectionMeta number="05" label="Contact" dark className="mb-8" />
             <h2 className="text-display text-background max-w-[14ch]">
-              <MaskedLines lines={['If the work', 'needs to hold —', 'start here.']} />
+              <MaskedLines lines={['If the work', 'needs to hold', 'start here.']} />
             </h2>
           </div>
           <div className="md:col-span-4 md:flex md:flex-col md:justify-end">

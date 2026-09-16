@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+
 import { Link, useLocation } from "react-router-dom";
+
 import { motion, AnimatePresence } from "motion/react";
 
-import { Wordmark } from "@/components/ui/Wordmark";
 import { MobileMenu } from "./MobileMenu";
 
 export const navLinks = [
@@ -26,7 +27,7 @@ export function Navigation() {
 
   const location = useLocation();
 
-  /*
+  /**
    * Navbar visibility
    * Hidden at the top.
    * Hidden while scrolling down.
@@ -68,7 +69,7 @@ export function Navigation() {
     };
   }, []);
 
-  /*
+  /**
    * Navbar theme
    * Reads the section currently sitting underneath the navbar.
    *
@@ -125,20 +126,19 @@ export function Navigation() {
 
     return () => {
       cancelAnimationFrame(frame);
-
       window.removeEventListener("scroll", updateTheme);
       window.removeEventListener("resize", updateTheme);
     };
   }, [location.pathname]);
 
-  /*
+  /**
    * Close mobile menu on route change
    */
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  /*
+  /**
    * Prevent background scrolling while mobile menu is open
    */
   useEffect(() => {
@@ -149,7 +149,7 @@ export function Navigation() {
     };
   }, [menuOpen]);
 
-  /*
+  /**
    * Fallback for internal pages that do not have
    * homepage section theme attributes.
    */
@@ -163,6 +163,7 @@ export function Navigation() {
 
   const navBackground = dark ? "#0B0909" : "#EEEEEE";
   const navForeground = dark ? "#EEEEEE" : "#0B0909";
+
   const navBorder = dark
     ? "rgba(238, 238, 238, 0.12)"
     : "#D0CECE";
@@ -255,8 +256,13 @@ export function Navigation() {
                         ease,
                         delay: 0.14,
                       }}
+                      className="flex h-[32px] w-[120px] items-center"
                     >
-                      <Wordmark inverted={dark} />
+                      <img
+                        src={dark ? "/logo-white.png" : "/logo-black.png"}
+                        alt="True Motion"
+                        className="block h-auto w-full object-contain"
+                      />
                     </motion.div>
                   </Link>
                 </motion.div>

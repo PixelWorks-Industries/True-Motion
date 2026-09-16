@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
+
 import { Link } from "react-router-dom";
 
-import { Wordmark } from "@/components/ui/Wordmark";
 import { useInView } from "@/hooks/useInView";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -39,95 +39,108 @@ export function Footer() {
       <div className="container-grid">
         {/* Main footer */}
         <div className="grid grid-cols-1 gap-14 border-b border-white/10 py-14 md:grid-cols-12 md:gap-8 md:py-20">
-          {/* Brand */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: reduced ? 0 : -32,
-              y: reduced ? 0 : 18,
-              filter: reduced ? "blur(0px)" : "blur(10px)",
-            }}
-            animate={
-              inView
-                ? {
-                    opacity: 1,
-                    x: 0,
-                    y: 0,
-                    filter: "blur(0px)",
-                  }
-                : {
-                    opacity: 0,
-                    x: reduced ? 0 : -32,
-                    y: reduced ? 0 : 18,
-                    filter: reduced ? "blur(0px)" : "blur(10px)",
-                  }
-            }
-            transition={
-              reduced
-                ? { duration: 0 }
-                : {
-                    duration: 0.9,
-                    ease: revealEase,
-                  }
-            }
-            className="md:col-span-5"
-          >
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduced ? 0 : 12,
-              }}
-              animate={{
-                opacity: inView ? 1 : 0,
-                y: inView ? 0 : reduced ? 0 : 12,
-              }}
-              transition={
-                reduced
-                  ? { duration: 0 }
-                  : {
-                      duration: 0.6,
-                      delay: 0.12,
-                      ease,
-                    }
-              }
-            >
-              <Wordmark inverted to="/" />
-            </motion.div>
+{/* Brand */}
+<motion.div
+  initial={{
+    opacity: 0,
+    x: reduced ? 0 : -32,
+    y: reduced ? 0 : 18,
+    filter: reduced ? "blur(0px)" : "blur(10px)",
+  }}
+  animate={
+    inView
+      ? {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          filter: "blur(0px)",
+        }
+      : {
+          opacity: 0,
+          x: reduced ? 0 : -32,
+          y: reduced ? 0 : 18,
+          filter: reduced ? "blur(0px)" : "blur(10px)",
+        }
+  }
+  transition={
+    reduced
+      ? { duration: 0 }
+      : {
+          duration: 0.9,
+          ease: revealEase,
+        }
+  }
+  className="md:col-span-5"
+>
+  <motion.div
+    initial={{
+      opacity: 0,
+      y: reduced ? 0 : 12,
+    }}
+    animate={{
+      opacity: inView ? 1 : 0,
+      y: inView ? 0 : reduced ? 0 : 12,
+    }}
+    transition={
+      reduced
+        ? { duration: 0 }
+        : {
+            duration: 0.6,
+            delay: 0.12,
+            ease,
+          }
+    }
+    className="flex h-[34px] items-center"
+  >
+    <Link
+      to="/"
+      aria-label="True Motion"
+      className="block h-[34px] w-[150px] overflow-hidden"
+    >
+      <img
+        src="/logo-white.png"
+        alt="True Motion"
+        className="block h-[150px] w-[150px] max-w-none object-contain"
+        style={{
+          transform: "translate(-20px, -58px)",
+        }}
+      />
+    </Link>
+  </motion.div>
 
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: reduced ? 0 : 16,
-                filter: reduced ? "blur(0px)" : "blur(6px)",
-              }}
-              animate={
-                inView
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                      filter: "blur(0px)",
-                    }
-                  : {
-                      opacity: 0,
-                      y: reduced ? 0 : 16,
-                      filter: reduced ? "blur(0px)" : "blur(6px)",
-                    }
-              }
-              transition={
-                reduced
-                  ? { duration: 0 }
-                  : {
-                      duration: 0.7,
-                      delay: 0.22,
-                      ease,
-                    }
-              }
-              className="mt-6 max-w-[280px] text-sm leading-[1.6] text-white/40"
-            >
-              Web, identity, motion, video, and digital work.
-            </motion.p>
-          </motion.div>
-
+  <motion.p
+    initial={{
+      opacity: 0,
+      y: reduced ? 0 : 16,
+      filter: reduced ? "blur(0px)" : "blur(6px)",
+    }}
+    animate={
+      inView
+        ? {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+          }
+        : {
+            opacity: 0,
+            y: reduced ? 0 : 16,
+            filter: reduced ? "blur(0px)" : "blur(6px)",
+          }
+    }
+    transition={
+      reduced
+        ? { duration: 0 }
+        : {
+            duration: 0.7,
+            delay: 0.22,
+            ease,
+          }
+    }
+    className="mt-6 max-w-[280px] text-sm leading-[1.6] text-white/40"
+  >
+    Web, identity, motion, video, and digital work.
+  </motion.p>
+</motion.div>
           {/* Navigation */}
           <motion.div
             initial={{
@@ -431,7 +444,7 @@ export function Footer() {
                   }}
                   className="relative"
                 >
-                  hello@truemotion.studio
+                  zain10here@gmail.com - temp mail
 
                   <span
                     aria-hidden="true"
@@ -488,9 +501,7 @@ export function Footer() {
           className="flex flex-col gap-3 border-t border-white/10 py-5 text-[10px] uppercase tracking-[0.14em] text-white/25 md:flex-row md:items-center md:justify-between"
         >
           <span>© {new Date().getFullYear()} True Motion</span>
-
           <span>United States & Canada</span>
-
           <span>Web / Identity / Motion</span>
         </motion.div>
       </div>
